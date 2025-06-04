@@ -22,7 +22,7 @@
 *   **1.3 付款 (Payment)**
     *   **核心功能**:
         *   顯示訂單摘要，包含電影資訊、場次、座位、餐點、總金額等。
-        *   允許用戶輸入支付資訊（例如：信用卡號、有效期限、安全碼）。
+        *   允許用戶輸入信用卡支付資訊（例如：信用卡號、有效期限、安全碼）。
         *   實作支付資訊的驗證。
         *   提供返回上一步（座位）的導航。
         *   提供確認付款的按鈕，並在支付資訊有效後啟用。
@@ -52,7 +52,7 @@
         *   `booking-payment` 頁面需要從 `booking-seat` 頁面導航過來，並攜帶有效的座位選擇資訊。
         *   `booking-result` 頁面需要從 `booking-payment` 頁面導航過來，並攜帶訂單處理結果。
     *   **實作方式**:
-        *   可以使用前端路由守衛 (Navigation Guards)，例如 Vue Router 的 `beforeEach` 或 `beforeEnter`。
+        *   使用導航守衛 (Navigation Guards)，例如 Vue Router 的 `beforeEach` 或 `beforeEnter`。
         *   在進入每個階段頁面時，檢查 Pinia Store 中是否存在前一階段的必要資料。如果資料不完整，則重定向回前一階段或購票流程的起點。
         *   `booking-result` 頁面在訂單成功時，可以透過路由參數 (`:orderId`) 傳遞訂單 ID，以便顯示詳細資訊。
 
@@ -157,7 +157,6 @@
         ```json
         {
             "orderId": "ORD202406040001",
-            "paymentMethod": "credit_card",
             "paymentDetails": {
                 "cardNumber": "xxxx-xxxx-xxxx-xxxx",
                 "expiryDate": "MM/YY",
@@ -249,8 +248,8 @@
         *   **職責**: 顯示當前購票流程的摘要資訊（電影、場次、座位、餐點、總價）。
         *   **屬性**: `movieInfo` (Object), `selectedSeats` (Array), `selectedCombos` (Array), `totalAmount` (Number)。
     *   **`PaymentForm.vue`**:
-        *   **職責**: 提供支付方式選擇和支付資訊輸入表單。
-        *   **屬性**: `paymentMethods` (Array of String)。
+        *   **職責**: 提供支付資訊輸入表單 (支付方式固定為信用卡)。
+        *   **屬性**: 無。
         *   **事件**: `submit-payment` (paymentDetails)。
     *   **`OrderDetails.vue`**:
         *   **職責**: 顯示訂單的詳細資訊。

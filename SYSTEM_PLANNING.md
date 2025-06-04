@@ -297,25 +297,45 @@
 
 ```mermaid
 graph TD
-    A[首頁/電影列表] --> B{選擇電影與場次};
-    B --> C[電影與餐點頁面];
-    C -- 選擇電影與餐點 --> D{確認選擇};
-    D -- 選擇完成 --> E[座位選擇頁面];
-    E -- 選擇座位 --> F{確認座位};
-    F -- 座位完成 --> G[付款頁面];
-    G -- 輸入支付資訊 --> H{確認付款};
-    H -- 付款成功 --> I[訂購結果頁面 (成功)];
-    H -- 付款失敗 --> J[訂購結果頁面 (失敗)];
+    Start([開始]) --> MovieCombo[電影與餐點選擇<br/>Movie & Combo Selection]
 
-    subgraph 購票流程
-        C -- Pinia/Props --> E;
-        E -- Pinia/Props --> G;
-        G -- Pinia/Router Params --> I;
-        G -- Pinia/Router Params --> J;
-    end
+    %% Movie & Combo Selection Flow
+    MovieCombo --> |選擇電影場次| SelectMovie(選擇電影和場次)
+    MovieCombo --> |選擇餐點| SelectCombo(選擇餐點組合)
+    SelectMovie --> ValidateMovieCombo{驗證選擇}
+    SelectCombo --> ValidateMovieCombo
 
-    style C fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#f9f,stroke:#333,stroke-width:2px
-    style G fill:#f9f,stroke:#333,stroke-width:2px
-    style I fill:#f9f,stroke:#333,stroke-width:2px
-    style J fill:#f9f,stroke:#333,stroke-width:2px
+    %% Seat Selection Flow
+    ValidateMovieCombo --> |完成選擇| Seat[座位選擇<br/>Seat Selection]
+    ValidateMovieCombo --> |未完成| MovieCombo
+    Seat --> SelectSeats(選擇座位)
+    SelectSeats --> ValidateSeats{驗證座位}
+    ValidateSeats --> |座位無效| SelectSeats
+
+    %% Payment Flow
+    ValidateSeats --> |座位有效| Payment[付款階段<br/>Payment]
+    Payment --> SelectPayMethod(選擇支付方式)
+    SelectPayMethod --> InputPayInfo(輸入支付資訊)
+    InputPayInfo --> ValidatePayment{驗證支付}
+    ValidatePayment --> |驗證失敗| InputPayInfo
+
+    %% Order Result Flow
+    ValidatePayment --> |支付成功| CreateOrder(建立訂單)
+    CreateOrder --> Result[訂購結果<br/>Order Result]
+    Result --> |成功| Success[顯示訂單資訊<br/>與取票碼]
+    Result --> |失敗| Failure[顯示錯誤<br/>與重試選項]
+
+    %% Final States
+    Success --> End([結束])
+    Failure --> |重試| Payment
+    Failure --> End
+
+    %% Styling
+    classDef process fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef decision fill:#fff3e0,stroke:#ef6c00,stroke-width:2px;
+    classDef state fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+
+    class MovieCombo,Seat,Payment,Result state;
+    class ValidateMovieCombo,ValidateSeats,ValidatePayment decision;
+    class SelectMovie,SelectCombo,SelectSeats,SelectPayMethod,InputPayInfo,CreateOrder process;
+```

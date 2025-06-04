@@ -216,19 +216,15 @@
 *   **4.1 頁面級組件 (Page Components)**
     *   **`MovieComboSelection.vue`**:
         *   **職責**: 負責電影場次和餐點選擇的整體佈局和邏輯。
-        *   **屬性**: 無。
         *   **子組件**: `MovieList`, `ComboList`, `BookingSummary`。
     *   **`SeatSelection.vue`**:
         *   **職責**: 負責座位選擇的整體佈局和邏輯。
-        *   **屬性**: 無。
         *   **子組件**: `TheaterSeatingChart`, `BookingSummary`。
     *   **`Payment.vue`**:
         *   **職責**: 負責支付方式選擇和支付資訊輸入的整體佈局和邏輯。
-        *   **屬性**: 無。
         *   **子組件**: `OrderSummary`, `PaymentForm`。
     *   **`OrderResult.vue`**:
         *   **職責**: 負責顯示訂單結果和詳細資訊。
-        *   **屬性**: 無。
         *   **子組件**: `OrderDetails`。
 
 *   **4.2 可重用組件 (Reusable Components)**
@@ -249,7 +245,6 @@
         *   **屬性**: `movieInfo` (Object), `selectedSeats` (Array), `selectedCombos` (Array), `totalAmount` (Number)。
     *   **`PaymentForm.vue`**:
         *   **職責**: 提供支付資訊輸入表單 (支付方式固定為信用卡)。
-        *   **屬性**: 無。
         *   **事件**: `submit-payment` (paymentDetails)。
     *   **`OrderDetails.vue`**:
         *   **職責**: 顯示訂單的詳細資訊。

@@ -1,6 +1,6 @@
 # To-Do List
 
-Based on SYSTEM_PLANNING.md:
+Based on spec.md:
 
 ## Core Stages Implementation
 - [ ] Implement Movie & Combo Selection UI

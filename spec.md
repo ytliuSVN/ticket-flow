@@ -221,8 +221,8 @@
         *   **職責**: 負責座位選擇的整體佈局和邏輯。
         *   **子組件**: `TheaterSeatingChart`, `BookingSummary`。
     *   **`Payment.vue`**:
-        *   **職責**: 負責支付方式選擇和支付資訊輸入的整體佈局和邏輯。
-        *   **子組件**: `OrderSummary`, `PaymentForm`。
+        *   **職責**: 負責支付資訊輸入與付款流程的整體佈局和邏輯（支付方式僅支援信用卡）。
+        *   **子組件**: `PaymentForm`, `BookingSummary`。
     *   **`OrderResult.vue`**:
         *   **職責**: 負責顯示訂單結果和詳細資訊。
         *   **子組件**: `OrderDetails`。

@@ -46,9 +46,7 @@ const updateSelectedCombos = (combos) => {
   bookingStore.setSelectedCombos(combos);
 };
 
-const nextButtonDisabled = computed(
-  () => !selectedMovieLocal.value || selectedCombosLocal.value.length === 0
-);
+const nextButtonDisabled = computed(() => !bookingStore.isMovieComboSelected);
 </script>
 
 <style lang="scss" scoped>

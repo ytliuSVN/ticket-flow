@@ -44,11 +44,11 @@ import { ref, watch } from "vue";
 const props = defineProps({
   theaterId: {
     type: String,
-    required: true,
+    default: "",
   },
   movieId: {
     type: String,
-    required: true,
+    default: "",
   },
 });
 

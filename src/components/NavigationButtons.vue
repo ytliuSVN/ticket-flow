@@ -1,7 +1,7 @@
 <template>
   <div class="navigation-buttons">
-    <button @click="navigatePrev" :disabled="!prevRouteName">上一步</button>
-    <button @click="navigateNext" :disabled="nextButtonDisabled">下一步</button>
+    <button v-if="prevRouteName" @click="navigatePrev">返回</button>
+    <button @click="navigateNext" :disabled="nextButtonDisabled">確認</button>
   </div>
 </template>
 

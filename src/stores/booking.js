@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
-export const useBookingStore = defineStore('booking', {
+export const useBookingStore = defineStore("booking", {
   state: () => ({
     selectedMovie: null,
     selectedCombos: [],
@@ -38,8 +38,9 @@ export const useBookingStore = defineStore('booking', {
     },
   },
   getters: {
-    isMovieComboSelected: (state) => state.selectedMovie !== null && state.selectedCombos.length > 0,
+    isMovieComboSelected: (state) =>
+      state.selectedMovie !== null && state.selectedCombos.length > 0,
     isSeatSelected: (state) => state.selectedSeats.length > 0,
-    isPaymentProcessed: (state) => state.paymentStatus === 'paid',
+    isPaymentProcessed: (state) => state.paymentStatus === "paid",
   },
 });

@@ -216,7 +216,7 @@
 *   **4.1 頁面級組件 (Page Components)**
     *   **`MovieComboSelection.vue`**:
         *   **職責**: 負責電影場次和餐點選擇的整體佈局和邏輯。
-        *   **子組件**: `MovieList`, `ComboList`, `BookingSummary`。
+        *   **子組件**: `MovieList`, `ComboSelection`, `BookingSummary`。
     *   **`SeatSelection.vue`**:
         *   **職責**: 負責座位選擇的整體佈局和邏輯。
         *   **子組件**: `TheaterSeatingChart`, `BookingSummary`。
@@ -232,8 +232,8 @@
         *   **職責**: 顯示電影列表，允許用戶選擇電影和場次。
         *   **屬性**: `movies` (Array of Object), `selectedMovieId` (String), `selectedShowtimeId` (String)。
         *   **事件**: `select-showtime` (showtimeId)。
-    *   **`ComboList.vue`**:
-        *   **職責**: 顯示餐點列表，允許用戶選擇餐點數量。
+    *   **`ComboSelection.vue`**:
+        *   **職責**: 負責餐點選擇的邏輯和顯示。
         *   **屬性**: `combos` (Array of Object), `selectedCombos` (Array of Object)。
         *   **事件**: `update-combo-quantity` (comboId, quantity)。
     *   **`TheaterSeatingChart.vue`**:

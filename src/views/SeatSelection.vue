@@ -1,8 +1,11 @@
 <template>
   <div class="seat-selection">
     <h1>座位選擇</h1>
-    <p>這裡是座位選擇頁面。</p>
-    <!-- TODO: Add TheaterSeatingChart, BookingSummary components -->
+    <TheaterSeatingChart
+      :theaterId="bookingStore.selectedTheaterId"
+      :movieId="bookingStore.selectedMovieId"
+    />
+    <!-- TODO: Add BookingSummary component -->
     <NavigationButtons
       prevRouteName="booking-movie-combo"
       nextRouteName="booking-payment"
@@ -12,9 +15,10 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useBookingStore } from '../stores/booking';
-import NavigationButtons from '../components/NavigationButtons.vue';
+import { computed } from "vue";
+import { useBookingStore } from "../stores/booking";
+import NavigationButtons from "../components/NavigationButtons.vue";
+import TheaterSeatingChart from "../components/TheaterSeatingChart.vue";
 
 const bookingStore = useBookingStore();
 

@@ -1,10 +1,7 @@
 <template>
   <div class="seat-selection">
     <h1>座位選擇</h1>
-    <TheaterSeatingChart
-      :theaterId="bookingStore.selectedTheaterId"
-      :movieId="bookingStore.selectedMovieId"
-    />
+    <TheaterSeatingChart />
     <!-- TODO: Add BookingSummary component -->
     <NavigationButtons
       prevRouteName="booking-movie-combo"

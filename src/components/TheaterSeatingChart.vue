@@ -41,17 +41,6 @@
 import { useBookingStore } from "@/stores/booking";
 import { ref, watch } from "vue";
 
-const props = defineProps({
-  theaterId: {
-    type: String,
-    default: "",
-  },
-  movieId: {
-    type: String,
-    default: "",
-  },
-});
-
 const bookingStore = useBookingStore();
 const selectedSeats = ref(bookingStore.selectedSeats);
 

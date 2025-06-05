@@ -1,8 +1,8 @@
 <template>
   <div class="payment">
     <h1>付款</h1>
-    <p>這裡是付款頁面。</p>
-    <!-- TODO: Add PaymentForm, BookingSummary components -->
+    <PaymentForm />
+    <!-- TODO: Add BookingSummary components -->
     <NavigationButtons
       prevRouteName="booking-seat"
       nextRouteName="booking-result"
@@ -15,6 +15,7 @@
 import { computed } from 'vue';
 import { useBookingStore } from '../stores/booking';
 import NavigationButtons from '../components/NavigationButtons.vue';
+import PaymentForm from '../components/PaymentForm.vue';
 
 const bookingStore = useBookingStore();
 

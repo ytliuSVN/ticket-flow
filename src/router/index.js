@@ -79,4 +79,5 @@ const router = createRouter({
   routes,
 });
 
+export { routes }; // Export routes array
 export default router;

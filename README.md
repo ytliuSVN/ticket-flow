@@ -27,3 +27,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Run Unit Tests
+
+```sh
+npm test
+```

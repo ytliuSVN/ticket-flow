@@ -26,8 +26,9 @@ const routes = [
     beforeEnter: (to, from, next) => {
       const bookingStore = useBookingStore();
       if (
-        from.name === "booking-movie-combo" &&
-        bookingStore.isMovieComboSelected
+        (from.name === "booking-movie-combo" &&
+          bookingStore.isMovieComboSelected) ||
+        from.name === "booking-payment"
       ) {
         next();
       } else {

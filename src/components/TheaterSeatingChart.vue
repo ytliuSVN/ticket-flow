@@ -53,7 +53,7 @@ const props = defineProps({
 });
 
 const bookingStore = useBookingStore();
-const selectedSeats = ref([]);
+const selectedSeats = ref(bookingStore.selectedSeats);
 
 // Dummy seating layout for demonstration
 const seatingLayout = ref([]);

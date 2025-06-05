@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "pinia": "^3.0.3",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/test-utils": "^2.4.6",
+    "gh-pages": "^6.3.0",
     "jsdom": "^26.1.0",
     "sass": "^1.89.1",
     "vite": "^6.2.4",

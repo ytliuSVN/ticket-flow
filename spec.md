@@ -15,7 +15,7 @@
     *   **核心功能**:
         *   顯示所選電影場次的影廳座位圖。
         *   區分`已售出`、`未售出`和已選座位（`您的座位`）。
-        *   允許用戶自由選擇一個或多個可用座位，並可隨時變更選擇。
+        *   允許用戶自由選擇一個座位，並可隨時變更選擇。
         *   動態更新已選座位的座位代號（如：E8）及選擇的座位數量。
         *   提供返回上一步（電影與餐點）的導航。
         *   提供進入下一步（付款）的按鈕，並在選擇座位後啟用。
@@ -129,8 +129,7 @@
         {
             "showtimeId": "st001",
             "selectedSeats": [
-                { "row": "A", "col": 3 },
-                { "row": "A", "col": 4 }
+                { "row": "A", "col": 3 }
             ],
             "selectedCombos": [
                 { "comboId": "combo001", "quantity": 1 }
@@ -199,7 +198,7 @@
                 "status": "paid",
                 "movieTitle": "電影名稱 A",
                 "showtime": "2024-06-04 14:00 影廳 1",
-                "selectedSeats": ["A3", "A4"],
+                "selectedSeats": ["A3"],
                 "selectedCombos": [
                     { "name": "爆米花套餐", "quantity": 1, "price": 150 }
                 ],

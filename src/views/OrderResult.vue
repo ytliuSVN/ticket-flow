@@ -8,12 +8,15 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
+import { useBookingStore } from "@/stores/booking";
 
 const router = useRouter();
+const bookingStore = useBookingStore();
 
 const goToHome = () => {
-  router.push('/');
+  bookingStore.resetBooking();
+  router.push("/");
 };
 </script>
 
@@ -28,7 +31,7 @@ const goToHome = () => {
 .home-button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50; /* Green */
   color: white;
   border: none;
   border-radius: 5px;

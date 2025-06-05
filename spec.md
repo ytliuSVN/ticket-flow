@@ -229,9 +229,9 @@
 
 *   **4.2 可重用組件 (Reusable Components)**
     *   **`MovieList.vue`**:
-        *   **職責**: 顯示電影列表，允許用戶選擇電影和場次。
-        *   **屬性**: `movies` (Array of Object), `selectedMovieId` (String), `selectedShowtimeId` (String)。
-        *   **事件**: `select-showtime` (showtimeId)。
+        *   **職責**: 顯示電影列表，允許用戶選擇電影。
+        *   **屬性**: `movies` (Array), `selectedMovie` (Object)。
+        *   **事件**: `selectMovie` (movie object)。
     *   **`ComboSelection.vue`**:
         *   **職責**: 負責餐點選擇的邏輯和顯示。
         *   **屬性**: `combos` (Array of Object), `selectedCombos` (Array of Object)。

@@ -2,10 +2,10 @@
   <div id="app">
     <header>
       <nav>
-        <RouterLink to="/booking/movie-combo">電影與餐點</RouterLink>
-        <RouterLink to="/booking/seat">座位</RouterLink>
-        <RouterLink to="/booking/payment">付款</RouterLink>
-        <RouterLink to="/booking/result">訂購結果</RouterLink>
+        <RouterLink :to="{ name: 'booking-movie-combo' }">電影與餐點</RouterLink>
+        <RouterLink :to="{ name: 'booking-seat' }">座位</RouterLink>
+        <RouterLink :to="{ name: 'booking-payment' }">付款</RouterLink>
+        <RouterLink :to="{ name: 'booking-result' }">訂購結果</RouterLink>
       </nav>
     </header>
 

@@ -2,67 +2,81 @@
   <div class="payment-form">
     <form @submit.prevent="processPayment">
       <div class="form-group">
-        <label for="cardNumber">Card Number:</label>
+        <label for="cardNumber">信用卡卡號</label>
         <input type="text" id="cardNumber" v-model="cardNumber" />
       </div>
       <div class="form-group">
-        <label for="cardName">Card Holder Name:</label>
+        <label for="cardName">持卡人名稱</label>
         <input type="text" id="cardName" v-model="cardName" />
       </div>
       <div class="form-group">
-        <label for="expiryDate">Expiry Date (MM/YY):</label>
-        <input type="text" id="expiryDate" v-model="expiryDate" placeholder="MM/YY" />
+        <label for="expiryDate">卡片到期日</label>
+        <input
+          type="text"
+          id="expiryDate"
+          v-model="expiryDate"
+          placeholder="MM/YY"
+        />
       </div>
       <div class="form-group">
-        <label for="cvv">CVV:</label>
+        <label for="cvv">CVV</label>
         <input type="text" id="cvv" v-model="cvv" />
       </div>
+      <button type="submit">付款</button>
     </form>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch } from "vue";
+import { useBookingStore } from "@/stores/booking";
 
-const cardNumber = ref('');
-const cardName = ref('');
-const expiryDate = ref('');
-const cvv = ref('');
+const cardNumber = ref("");
+const cardName = ref("");
+const expiryDate = ref("");
+const cvv = ref("");
 
-const emit = defineEmits(['form-validity-change']);
+const emit = defineEmits(["form-validity-change"]);
 
 const isFormValid = computed(() => {
-  return cardNumber.value.length > 0 &&
-         cardName.value.length > 0 &&
-         expiryDate.value.length > 0 &&
-         cvv.value.length > 0;
+  return (
+    cardNumber.value.length > 0 &&
+    cardName.value.length > 0 &&
+    expiryDate.value.length > 0 &&
+    cvv.value.length > 0
+  );
 });
 
-watch(isFormValid, (newValue) => {
-  emit('form-validity-change', newValue);
-}, { immediate: true });
+watch(
+  isFormValid,
+  (newValue) => {
+    emit("form-validity-change", newValue);
+  },
+  { immediate: true }
+);
+
+const bookingStore = useBookingStore();
 
 const processPayment = () => {
-  // No validation logic for demo purposes
-  console.log('Processing payment with:', {
-    cardNumber: cardNumber.value,
-    cardName: cardName.value,
-    expiryDate: expiryDate.value,
-    cvv: cvv.value
-  });
-  alert('Payment processed (demo only)!');
-  // In a real application, you would emit an event or call a store action here
+  if (isFormValid.value) {
+    console.log("Processing payment with:", {
+      cardNumber: cardNumber.value,
+      cardName: cardName.value,
+      expiryDate: expiryDate.value,
+      cvv: cvv.value,
+    });
+    bookingStore.setPaymentStatus("paid");
+    alert("Payment processed (demo only)!");
+  } else {
+    alert("Please fill in all payment details.");
+  }
 };
 </script>
 
 <style scoped>
 .payment-form {
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  max-width: 400px;
   margin: 20px auto;
-  background-color: #f9f9f9;
 }
 
 .payment-form h3 {
